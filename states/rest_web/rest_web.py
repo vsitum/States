@@ -16,7 +16,7 @@ app = Flask(__name__, static_url_path='')
 #connect to database
 conn = mysql.connector.connect(user='root', password='',
                                   host='127.0.0.1',
-                                  database='zipcodes',
+                                  database='zip_codes',
                                buffered = True)
 cursor = conn.cursor()
 
@@ -24,7 +24,7 @@ cursor = conn.cursor()
 @app.route('/searchZIPCODE/<searchZip>')
 def searchzip(searchZip):
     # Get data from database
-    cursor.execute("SELECT * FROM `zipcodes` WHERE zip=%s", [searchZip])
+    cursor.execute("SELECT * FROM `zip_codes` WHERE zip=%s", [searchZip])
     test = cursor.rowcount
     if test != 1:
         return searchZip + " was not found"
@@ -32,16 +32,16 @@ def searchzip(searchZip):
         searched = cursor.fetchall()
         return 'Success! Here you go: %s' % searched
 
-#update zipcodes database population for a specified zipcode
+#update zipc_odes database population for a specified zipcode
 @app.route('/updatezippop/<updateZIP> <updatePOP>')
 def updatezippop(updateZIP, updatePOP):
-    cursor.execute("SELECT * FROM `zipcodes` WHERE zip=%s", [updateZIP])
+    cursor.execute("SELECT * FROM `zip_codes` WHERE zip=%s", [updateZIP])
     test = cursor.rowcount
     if test != 1:
         return updateZIP + " was not found"
     else:
-        cursor.execute("UPDATE `zipcodes` SET Pop = %s WHERE zip= %s;", [updatePOP,updateZIP])
-        cursor.execute("SELECT * FROM `zipcodes` WHERE zip=%s and Pop=%s", [updateZIP,updatePOP])
+        cursor.execute("UPDATE `zip_codes` SET Pop = %s WHERE zip= %s;", [updatePOP,updateZIP])
+        cursor.execute("SELECT * FROM `zip_codes` WHERE zip=%s and Pop=%s", [updateZIP,updatePOP])
         test1 = cursor.rowcount
         if test1 != 1:
             return updateZIP + "failed to update"
