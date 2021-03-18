@@ -1,6 +1,5 @@
 #Restful interface that has search and update options for navigating a Zip code database on Phpmyadmin.
 
-
 #https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 #https://stackoverflow.com/questions/902408/how-to-use-variables-in-sql-statement-in-python
 #https://stackoverflow.com/questions/1081750/python-update-multiple-columns-with-python-variables
