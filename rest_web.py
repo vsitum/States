@@ -17,7 +17,7 @@ app = Flask(__name__, static_url_path='')
 conn = mysql.connector.connect(user='root', password='',
                                   host='127.0.0.1',
                                   database='zipcodes',
-                               buffered = True)
+                                  buffered = True)
 cursor = conn.cursor()
 
 #Search zipcodes database
