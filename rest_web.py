@@ -40,8 +40,8 @@ def updatezippop(updateZIP, updatePOP):
     if test != 1:
         return updateZIP + " was not found"
     else:
-        cursor.execute("UPDATE `zipcodes` SET Pop = %s WHERE zip= %s;", [updatePOP,updateZIP])
-        cursor.execute("SELECT * FROM `zipcodes` WHERE zip=%s and Pop=%s", [updateZIP,updatePOP])
+        cursor.execute("UPDATE `zipcodes` SET Population = %s WHERE zip= %s;", [updatePOP,updateZIP])
+        cursor.execute("SELECT * FROM `zipcodes` WHERE zip=%s and Population=%s", [updateZIP,updatePOP])
         test1 = cursor.rowcount
         if test1 != 1:
             return updateZIP + "failed to update"
